@@ -101,11 +101,6 @@ int main() {
     KartuUNO kartu[jumlahKartu];
     generateRandomKartu(kartu, jumlahKartu);
 
-    // Tampilkan kartu sebelum diurutkan
-    printf("\nKartu sebelum diurutkan:\n");
-    printKartu(kartu, jumlahKartu);
-    printf("\n");
-
     // Buat salinan array agar kedua algoritma bekerja pada data yang sama
     KartuUNO kartu1[jumlahKartu], kartu2[jumlahKartu];
     copyArray(kartu, kartu1, jumlahKartu);
@@ -123,13 +118,25 @@ int main() {
     end = clock();
     double waktuMerge = (double)(end - start) / CLOCKS_PER_SEC;
 
-    // Tampilkan hasil dan waktu eksekusi
-    printf("Setelah Insertion Sort:\n");
-    printKartu(kartu1, jumlahKartu);
-    printf("Waktu Insertion Sort: %f detik\n\n", waktuInsertion);
+    // Menu pilihan
+    int pilihan;
+    printf("Pilih output yang diinginkan:\n");
+    printf("1. Lihat kartu yang terurut\n");
+    printf("2. Tampilkan waktu hasil sorting saja\n");
+    printf("Masukkan pilihan: ");
+    scanf("%d", &pilihan);
 
-    printf("Setelah Merge Sort:\n");
-    printKartu(kartu2, jumlahKartu);
+    if (pilihan == 1) {
+        printf("\nKartu sebelum diurutkan:\n");
+        printKartu(kartu, jumlahKartu);
+        printf("\n");
+        printf("\nSetelah Insertion Sort:\n");
+        printKartu(kartu1, jumlahKartu);
+        printf("\nSetelah Merge Sort:\n");
+        printKartu(kartu2, jumlahKartu);
+    }
+
+    printf("\nWaktu Insertion Sort: %f detik\n", waktuInsertion);
     printf("Waktu Merge Sort: %f detik\n", waktuMerge);
 
     return 0;
